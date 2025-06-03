@@ -7,7 +7,7 @@
 
 ### Citation
 ```
-@inproceedings{zhaimengqi,
+@inproceedings{zhaimengqiacl2025,
     author = {Songlin Zhai and Yuan Meng and Yuxin Zhang and Guilin Qi},
     title = {Parameter-Aware Contrastive Knowledge Editing: Tracing and Rectifying based on Critical Transmission Paths},
     booktitle = {ACL},
