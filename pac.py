@@ -5,7 +5,7 @@
 
 import os
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"
-os.environ["CUDA_VISIBLE_DEVICES"]="4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"]="0,1,2,3"
 
 import sys
 sys.path.append('./')
@@ -36,7 +36,7 @@ from plms.llama3 import LlamaForCausalLM as Llama3ForCausalLM
 CONFIG = {
     "name": "Parameter-Aware Contrastive Knowledge Editing",
     "gptj":{
-        "path": "/home/zhaisonglin/disk/songlin/resources/GPTJ/",
+        "path": "[Path/to/model]",
         "bias": True,
         "ffn1_nm_key": "mlp.fc_in",
         "ffn2_nm_key": "mlp.fc_out",
@@ -50,7 +50,7 @@ CONFIG = {
         "lm_head_device": "self.model.transformer.ln_f.weight.device"
     },
     "llama2-7B":{
-        "path": "/home/zhaisonglin/disk/songlin/resources/Llama2/7B/",
+        "path": "[Path/to/model]",
         "bias": False,
         "ffn1_nm_key": "mlp.up_proj",
         "ffn2_nm_key": "mlp.down_proj",
@@ -62,7 +62,7 @@ CONFIG = {
         "lm_head_device": "self.model.lm_head.weight.device"
     },
     "llama3-8B":{
-        "path": "/home/zhaisonglin/disk/songlin/resources/Llama3/8B",
+        "path": "[Path/to/model]",
         "bias": False,
         "ffn1_nm_key": "mlp.up_proj",
         "ffn2_nm_key": "mlp.down_proj",
