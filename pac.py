@@ -642,18 +642,20 @@ if __name__ == '__main__':
     else: model.model.disperse_to_gpus(gpu_config)
     #
     if args.data_name == 'zsre':
-        data = ZsRE(CONFIG['data']['zsre'].format(''))
-        data.segments(group_idx=0)
         if not os.path.exists(CONFIG['data']['zsre'].format('_'+model.llm)):
+            data = ZsRE(CONFIG['data']['zsre'].format(''))
+            data.segments(group_idx=0)
             data.reproduce(model.model, model.tokenizer, model.emb_device, './data/zsre_edit_'+model.llm+'.json')
+        else: data = ZsRE(CONFIG['data']['zsre'].format('_'+model.llm))
         edit_loader = ZsREDataLoader(data, args.edit_bs)
         assess_loader = ZsREDataLoader(data, args.edit_bs)
         test_loader = ZsREDataLoader(data, args.test_bs, shuffle=False)
     elif args.data_name == 'counterfact':
-        data = CounterFact(CONFIG['data']['counterfact'].format(''))
-        data.segments(group_idx=0)
         if not os.path.exists(CONFIG['data']['counterfact'].format('_'+model.llm)):
+            data = CounterFact(CONFIG['data']['counterfact'].format(''))
+            data.segments(group_idx=0)
             data.reproduce(model.model, model.tokenizer, model.emb_device, './data/counterfact_edit_'+model.llm+'.json')
+        else: data = CounterFact(CONFIG['data']['counterfact'].format('_'+model.llm))
         edit_loader = CounterFactDataLoader(data, args.edit_bs)
         assess_loader = CounterFactDataLoader(data, args.edit_bs)
         test_loader = CounterFactDataLoader(data, args.test_bs, shuffle=False)
